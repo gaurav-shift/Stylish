@@ -27,11 +27,13 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    onNavigationNext:()-> Unit
+    isLoading: Boolean,
+    onFinish:()-> Unit
 ){
-    LaunchedEffect(true) {
-        delay(1000)
-        onNavigationNext()
+    LaunchedEffect(isLoading) { // uses unit as key
+        if(!isLoading){
+            onFinish()
+        }
     }
 
    Box(
